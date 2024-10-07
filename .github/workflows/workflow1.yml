@@ -1,0 +1,14 @@
+name: Branch Name
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    print_branch_name:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Branch Name
+              run: |
+               echo "Branch Name: %BRANCH_NAME%

@@ -1,0 +1,25 @@
+name: Print Job name
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    job_one:
+        name: Job One
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Job One Name
+              env: 
+                JOB_NAME: ${{github.job}}
+              run: echo "This is $JOB_NAME"
+              
+    job_two:
+        name: Job Two
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Job Two Name
+              env: 
+                JOB_NAME: ${{github.job}}
+              run: echo "This is $JOB_NAME"

@@ -1,0 +1,25 @@
+name: Dependent Jobs Workflow
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    job_one:
+        runs-on: ubuntu-latest
+        outputs:
+            name_output: ${{ steps.step1.outputs.name }}
+        steps:
+            - name: Job 1
+              id: step1
+              run: echo "name = Yazeed" >> $GITHUB_OUTPUT
+
+    job_two:
+        runs-on: ubuntu-latest
+        needs: job_one
+        steps:
+            - name: Job 2
+              env:
+                NAME: ${{ needs.job_one.outputs.name_output }}
+                  run: echo "Hello, $NAME!"
