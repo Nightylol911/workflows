@@ -10,5 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Print Branch Name
+              env:
+                BRANCH_NAME: ${{github.ref}}
               run: |
-               echo "Branch Name: %BRANCH_NAME%
+               echo "Branch Name: ${{github.ref}}"
